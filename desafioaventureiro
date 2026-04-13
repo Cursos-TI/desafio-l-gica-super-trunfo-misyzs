@@ -1,0 +1,207 @@
+#include <stdio.h>
+
+int main() {
+    char estadoA, estadoB;
+    char codigoA[4], codigoB[4];
+    char cidadeA[16], cidadeB[16];
+    
+    int populacaoA, populacaoB;
+    int pontosA, pontosB;
+    int opcoes;
+
+    float areaA, areaB;
+    float pibA, pibB;
+    float densidadeA, densidadeB;
+    float percapitaA, percapitaB;
+    float poderA, poderB;
+
+    // Primeira Carta
+
+    printf("Informações da primeira carta\n");
+
+    printf("Digite a inicial do estado: ");
+    scanf(" %c", &estadoA);
+
+    printf("Digite o código da carta (Letra inicial seguida de 2 números): ");
+    scanf(" %s", codigoA);
+
+    getchar(); // Usado para limpar cache do \n do "fgets" e não causar bugs
+
+    printf("Digite o nome de uma cidade do estado: ");
+    fgets(cidadeA, 16, stdin); // "fgets" Usado para digitar caracteres que o "scanf" nao identifica, como o espaço entre a cidade São Paulo
+    
+    printf("Digite o número de habitantes: ");
+    scanf(" %d", &populacaoA);
+
+    printf("Digite o número de pontos turisticos dessa cidade: ");
+    scanf(" %d", &pontosA);
+
+    printf("Digite a área da cidade em quilômetros quadrados: ");
+    scanf(" %f", &areaA);
+
+    printf("Digite o PIB da cidade: ");
+    scanf(" %f", &pibA);
+
+    // Segunda Carta
+
+    printf("\nInformações da segunda carta\n");
+
+    printf("Digite a inicial do estado: ");
+    scanf(" %c", &estadoB);
+
+    printf("Digite o código da carta (Letra inicial seguida de 2 números): ");
+    scanf(" %s", codigoB);
+
+    getchar();
+
+    printf("Digite o nome de uma cidade do estado: ");
+    fgets(cidadeB, 16, stdin);
+
+    printf("Digite o número de habitantes: ");
+    scanf(" %d", &populacaoB);
+
+    printf("Digite o número de pontos turisticos dessa cidade: ");
+    scanf(" %d", &pontosB);
+
+    printf("Digite a área da cidade em quilômetros quadrados: ");
+    scanf(" %f", &areaB);
+
+    printf("Digite o PIB da cidade: ");
+    scanf(" %f", &pibB);
+
+    // Exibição das duas cartas
+
+    printf("\nCarta A\n");
+
+    printf("Inicial do estado: %c\n", estadoA);
+    printf("Código da carta: %s\n", codigoA);
+    printf("Número de habitantes da cidade: %d\n", populacaoA);
+    printf("Número de pontos turisticos: %d\n", pontosA);
+    printf("Área da cidade: %.2f\n", areaA);
+    printf("PIB da cidade: %.2f\n", pibA);
+
+    densidadeA = populacaoA / areaA;
+    printf("A densidade populacional é de: %.2f\n", densidadeA);
+
+    percapitaA = pibA / populacaoA;
+    printf("O PIB per Capita é de: %.2f\n", percapitaA);
+
+    printf("\nCarta B\n");
+
+    printf("Inicial do estado: %c\n", estadoB);
+    printf("Código da carta: %s\n", codigoB);
+    printf("Número de habitantes da cidade: %d\n", populacaoB);
+    printf("Número de pontos turisticos: %d\n", pontosB);
+    printf("Área da cidade: %.2f\n", areaB);
+    printf("PIB da cidade: %.2f\n", pibB);
+
+    densidadeB = populacaoB / areaB;
+    printf("A densidade populacional é de: %.2f\n", densidadeB);
+
+    percapitaB = pibB / populacaoB;
+    printf("O PIB per Capita é de: %.2f\n", percapitaB);
+
+    // Comparação entre as duas cartas
+
+    printf("\nComparação entre cartas\n");
+
+    printf("Para ver o nome das cidades, digite: 1\n");
+    printf("Para ver o vencedor em habitantes, digite: 2\n");
+    printf("Para ver o vencedor em área, digite: 3\n");
+    printf("Para ver o vencedor em PIB, digite: 4\n");
+    printf("Para ver o vencedor em pontos turisticos, digite: 5\n");
+    printf("Para ver o vencendor em densidade populacional, digite: 6\n");
+    scanf(" %d", &opcoes);
+
+    switch (opcoes) {
+        case 1:
+        printf("Os nomes das cidades são %s e %s.\n", cidadeA, cidadeB);
+        break;
+
+        case 2:
+        if (populacaoA == populacaoB) {
+            printf("\n### DEU EMPATE ###\n");
+            printf("Habitantes da carta A: %d\n", populacaoA);
+            printf("Habitantes da carta B: %d\n", populacaoB);
+        } else if (populacaoA > populacaoB) {
+            printf("\n*** CARTA A FOI A VENCEDORA!!! ***\n");
+            printf("Habitantes da carta A: %d\n", populacaoA);
+            printf("Habitantes da carta B: %d\n", populacaoB);
+        } else {
+            printf("\n*** CARTA B FOI A VENCEDORA!!! ***\n");
+            printf("Habitantes da carta A: %d\n", populacaoA);
+            printf("Habitantes da carta B: %d\n", populacaoB);
+        }
+        break;
+
+        case 3:
+        if (areaA == areaB) {
+            printf("\n### DEU EMPATE ###\n");
+            printf("Área da carta A: %.2f\n", areaA);
+            printf("Área da carta B: %.2f\n", areaB);
+        } else if (areaA > areaB) {
+            printf("\n*** CARTA A FOI A VENCEDORA!!! ***\n");
+            printf("Área da carta A: %.2f\n", areaA);
+            printf("Área da carta B: %.2f\n", areaB);
+        } else {
+            printf("\n*** CARTA B FOI A VENCEDORA!!! ***\n");
+            printf("Área da carta A: %.2f\n", areaA);
+            printf("Área da carta B: %.2f\n", areaB);
+        }
+        break;
+
+        case 4:
+        if (pibA == pibB) {
+            printf("\n### DEU EMPATE ###\n");
+            printf("PIB da carta A: %.2f\n", pibA);
+            printf("PIB da carta B: %.2f\n", pibB);
+        } else if (pibA > pibB) {
+            printf("\n*** CARTA A FOI A VENCEDORA!!! ***\n");
+            printf("PIB da carta A: %.2f\n", pibA);
+            printf("PIB da carta B: %.2f\n", pibB);
+        } else {
+            printf("\n*** CARTA B FOI A VENCEDORA!!! ***\n");
+            printf("PIB da carta A: %.2f\n", pibA);
+            printf("PIB da carta B: %.2f\n", pibB);
+        }
+        break;
+
+        case 5:
+        if (pontosA == pontosB) {
+            printf("\n### DEU EMPATE ###\n");
+            printf("Número de pontos turisticos da carta A: %d\n", pontosA);
+            printf("Número de pontos turisticos da carta B: %d\n", pontosB);
+        } else if (pontosA > pontosB) {
+            printf("\n*** CARTA A FOI A VENCEDORA!!! ***\n");
+            printf("Número de pontos turisticos da carta A: %d\n", pontosA);
+            printf("Número de pontos turisticos da carta B: %d\n", pontosB);
+        } else {
+            printf("\n*** CARTA B FOI A VENCEDORA!!! ***\n");
+            printf("Número de pontos turisticos da carta A: %d\n", pontosA);
+            printf("Número de pontos turisticos da carta B: %d\n", pontosB);
+        }
+        break;
+
+        case 6:
+        if (densidadeA == densidadeB) {
+            printf("\n### DEU EMPATE ###\n");
+            printf("Densidade populacional da carta A: %.2f\n", densidadeA);
+            printf("Densidade populacional da carta B: %.2f\n", densidadeB);
+        } else if (densidadeA < densidadeB) {
+            printf("\n*** CARTA A FOI A VENCEDORA!!! ***\n");
+            printf("Densidade populacional da carta A: %.2f\n", densidadeA);
+            printf("Densidade populacional da carta B: %.2f\n", densidadeB);
+        } else {
+            printf("\n*** CARTA B FOI A VENCEDORA!!! ***\n");
+            printf("Densidade populacional da carta A: %.2f\n", densidadeA);
+            printf("Densidade populacional da carta B: %.2f\n", densidadeB);
+        }
+        break;
+
+        default:
+        printf("Opção Invalida.");
+        break;
+    }
+
+    return 0;
+}
