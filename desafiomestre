@@ -1,0 +1,207 @@
+#include <stdio.h>
+
+int main() {
+    char estadoA, estadoB;
+    char codigoA[4], codigoB[4];
+    char cidadeA[16], cidadeB[16];
+    
+    int populacaoA, populacaoB;
+    int pontosA, pontosB;
+    int opcoesA, opcoesB;
+
+    float areaA, areaB;
+    float pibA, pibB;
+    float densidadeA, densidadeB;
+    float percapitaA, percapitaB;
+    float poderA, poderB;
+    float soma1A, soma1B, soma2A, soma2B;
+    float resultadoA, resultadoB;
+
+    // Primeira Carta
+
+    printf("Informações da primeira carta\n");
+
+    printf("Digite a inicial do estado: ");
+    scanf(" %c", &estadoA);
+
+    printf("Digite o código da carta (Letra inicial seguida de 2 números): ");
+    scanf(" %s", codigoA);
+
+    getchar(); // Usado para limpar cache do \n do "fgets" e não causar bugs
+
+    printf("Digite o nome de uma cidade do estado: ");
+    fgets(cidadeA, 16, stdin); // "fgets" Usado para digitar caracteres que o "scanf" nao identifica, como o espaço entre a cidade São Paulo
+    
+    printf("Digite o número de habitantes: ");
+    scanf(" %d", &populacaoA);
+
+    printf("Digite o número de pontos turisticos dessa cidade: ");
+    scanf(" %d", &pontosA);
+
+    printf("Digite a área da cidade em quilômetros quadrados: ");
+    scanf(" %f", &areaA);
+
+    printf("Digite o PIB da cidade: ");
+    scanf(" %f", &pibA);
+
+    // Segunda Carta
+
+    printf("\nInformações da segunda carta\n");
+
+    printf("Digite a inicial do estado: ");
+    scanf(" %c", &estadoB);
+
+    printf("Digite o código da carta (Letra inicial seguida de 2 números): ");
+    scanf(" %s", codigoB);
+
+    getchar();
+
+    printf("Digite o nome de uma cidade do estado: ");
+    fgets(cidadeB, 16, stdin);
+
+    printf("Digite o número de habitantes: ");
+    scanf(" %d", &populacaoB);
+
+    printf("Digite o número de pontos turisticos dessa cidade: ");
+    scanf(" %d", &pontosB);
+
+    printf("Digite a área da cidade em quilômetros quadrados: ");
+    scanf(" %f", &areaB);
+
+    printf("Digite o PIB da cidade: ");
+    scanf(" %f", &pibB);
+
+    // Exibição das duas cartas
+
+    printf("\nCarta A\n");
+
+    printf("Inicial do estado: %c\n", estadoA);
+    printf("Código da carta: %s\n", codigoA);
+    printf("Número de habitantes da cidade: %d\n", populacaoA);
+    printf("Número de pontos turisticos: %d\n", pontosA);
+    printf("Área da cidade: %.2f\n", areaA);
+    printf("PIB da cidade: %.2f\n", pibA);
+
+    densidadeA = populacaoA / areaA;
+    printf("A densidade populacional é de: %.2f\n", densidadeA);
+
+    percapitaA = pibA / populacaoA;
+    printf("O PIB per Capita é de: %.2f\n", percapitaA);
+
+    printf("\nCarta B\n");
+
+    printf("Inicial do estado: %c\n", estadoB);
+    printf("Código da carta: %s\n", codigoB);
+    printf("Número de habitantes da cidade: %d\n", populacaoB);
+    printf("Número de pontos turisticos: %d\n", pontosB);
+    printf("Área da cidade: %.2f\n", areaB);
+    printf("PIB da cidade: %.2f\n", pibB);
+
+    densidadeB = populacaoB / areaB;
+    printf("A densidade populacional é de: %.2f\n", densidadeB);
+
+    percapitaB = pibB / populacaoB;
+    printf("O PIB per Capita é de: %.2f\n", percapitaB);
+
+    // Escolha dos atributos
+
+    printf("\n\n### ESCOLHA DOS ATRIBUTOS ###\n\n");
+
+    printf("Primeiro Atributo\n\n");
+
+    printf("Digite 1. para escolher número de habitantes.\n");
+    printf("Digite 2. para escolher área.\n");
+    printf("Digite 3. para escolher PIB.\n");
+    printf("Digite 4. para escolher Densidade.\n");
+    printf("Escolha: ");
+    scanf(" %d", &opcoesA);
+
+    switch (opcoesA) {
+        case 1:
+        printf("Você escolheu número de habitantes.\n");
+        soma1A = populacaoA;
+        soma1B = populacaoB;
+        break;
+
+        case 2:
+        printf("Você escolheu área.\n");
+        soma1A = areaA;
+        soma1B = areaB;
+        break;
+
+        case 3:
+        printf("Você escolheu PIB.\n");
+        soma1A = pibA;
+        soma1B = pibB;
+        break;
+
+        case 4:
+        printf("Voce escolheu densidade.\n");
+        soma1A = 1 / densidadeA; // Faz com que o valor da densidade inverta
+        soma1B = 1 / densidadeB;
+        break;
+
+        default:
+        printf("Opção Inválida.");
+        break;
+    }
+
+    printf("Segundo Atributo\n\n");
+
+    printf("Digite 1. para escolher número de habitantes.\n");
+    printf("Digite 2. para escolher área.\n");
+    printf("Digite 3. para escolher PIB.\n");
+    printf("Digite 4. para escolher Densidade.\n");
+    printf("Escolha: ");
+    scanf(" %d", &opcoesB);
+
+    if (opcoesB == opcoesA) {
+        printf("Escolha uma opção diferente da anterior!");
+    } else {
+        switch (opcoesB) {
+            case 1:
+            printf("Você escolheu número de habitantes.\n");
+            soma2A = populacaoA;
+            soma2B = populacaoB;
+            break;
+
+            case 2:
+            printf("Você escolheu área.\n");
+            soma2A = areaA;
+            soma2B = areaB;
+            break;
+
+            case 3:
+            printf("Você escolheu PIB.\n");
+            soma2A = pibA;
+            soma2B = pibB;
+            break;
+        
+            case 4:
+            printf("Voce escolheu densidade.\n");
+            soma2A = 1 / densidadeA;
+            soma2B = 1 / densidadeB;
+            break;
+
+            default:
+            printf("Opção Inválida.");
+            break;
+        }
+    }
+
+    resultadoA = soma1A + soma2A;
+    resultadoB = soma1B + soma2B;
+
+    printf("A SOMA DA CARTA A FOI: %.2f\n", resultadoA);
+    printf("A SOMA DA CARTA B FOI: %.2f\n", resultadoB);
+
+    if (resultadoA == resultadoB) {
+        printf("\n\n*** DEU EMPATE ***\n\n");
+    } else if (resultadoA > resultadoB) {
+        printf("\n\n*** CARTA A FOI A VENCEDORA ***\n\n");
+    } else {
+        printf("\n\n*** CARTA B FOI A VENCEDORA ***\n\n");
+    }
+
+    return 0;
+}
